@@ -23,5 +23,29 @@ namespace WalletRegent.Controllers
 
             return JsonConvert.SerializeObject(resultadoSaldo);
         }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [Route("ColocarDinheiroNaCarteira")]
+        public async Task<string> ColocarDinheiroNaCarteira(decimal valor, string fonte)
+        {
+            _walletSvc.PutMoneyInWallet(valor, fonte);
+
+            String resultadoSaldo = await _walletSvc.GetValueInWalletAsync();
+
+            return JsonConvert.SerializeObject(resultadoSaldo);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [Route("RetirarDinheiroNaCarteira")]
+        public async Task<string> RetirarDinheiroNaCarteira(decimal valor, string fonte)
+        {
+            _walletSvc.TakeMoneyfromWallet(valor, fonte);
+
+            String resultadoSaldo = await _walletSvc.GetValueInWalletAsync();
+
+            return JsonConvert.SerializeObject(resultadoSaldo);
+        }
     }
 }
