@@ -23,6 +23,7 @@ public class Startup
         
         services.AddHttpClient<IQuotationHttpService, QuotationHttpService>();
         services.AddHttpClient<IWalletHttpService, WalletHttpService>();
+        services.AddHttpClient<IExchangeWalletHttpService, ExchangeWalletHttpService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

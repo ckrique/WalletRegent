@@ -9,12 +9,11 @@ namespace WalletRegent.Services
 {
     public class WalletHttpService : IWalletHttpService
     {
-        private readonly HttpClient _httpClient;        
+        private readonly HttpClient _httpClient;
         private readonly string _serviceBaseUrl = "https://ff20-2804-14d-5c73-6ee5-74b8-9d1c-9885-2ee.sa.ngrok.io";
         private readonly string _pathListarSaldo = "/api/v1/CarteiraFinanceira/ListarSaldo";
         private readonly string _pathPutMoney = "/api/v1/CarteiraFinanceira/ColocarDinheiro";
         private readonly string _pathTakeMoney = "/api/v1/CarteiraFinanceira/RetirarDinheiro";
-        private readonly string _apiKey = "glmlf0inrekl0h9clleiron6bv04dngp9jbuogjst82lfe00hcc48";
 
         public WalletHttpService(HttpClient httpClient)
         {
