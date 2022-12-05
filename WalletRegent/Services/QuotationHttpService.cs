@@ -6,8 +6,7 @@ namespace WalletRegent.Services
 {
     public class QuotationHttpService : IQuotationHttpService
     {
-        private readonly HttpClient _httpClient;
-        private readonly string _remoteServiceBaseUrl;
+        private readonly HttpClient _httpClient;        
         private readonly string _serviceBaseUrl = "https://anyapi.io/api/v1/exchange/convert";
         private readonly string _apiKey = "glmlf0inrekl0h9clleiron6bv04dngp9jbuogjst82lfe00hcc48";
 
@@ -30,7 +29,7 @@ namespace WalletRegent.Services
 
             var uri = _serviceBaseUrl + complementoURL;
 
-            var responseString = await _httpClient.GetStringAsync(uri);//.ConfigureAwait(false);
+            var responseString = await _httpClient.GetStringAsync(uri);
 
             DadosCotacaoDTO dadosCotacao = JsonConvert.DeserializeObject<DadosCotacaoDTO>(responseString);
 

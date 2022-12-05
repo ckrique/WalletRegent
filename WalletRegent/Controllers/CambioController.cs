@@ -11,16 +11,13 @@ using System.Collections.Generic;
 namespace WalletRegent.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class CambioController : ControllerBase
     {
         private IQuotationHttpService _quotationSvc;
 
-        public CambioController(IQuotationHttpService catalogSvc) => _quotationSvc = catalogSvc;
+        public CambioController(IQuotationHttpService quotationSvc) => _quotationSvc = quotationSvc;
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
@@ -40,13 +37,6 @@ namespace WalletRegent.Controllers
             cotacoes.Add(cotacaoEuro.GetCotacao(QuotationHttpService.NOME_EURO));
                        
             return JsonConvert.SerializeObject(cotacoes);
-        }
-
-        // GET api/cambio/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
     }
 }
