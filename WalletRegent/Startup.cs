@@ -34,20 +34,21 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        //app
-        //.UseSwagger()
-        //.UseSwaggerUI(setup =>
-        //{
-        //    string swaggerJsonBasePath = string.IsNullOrWhiteSpace(setup.RoutePrefix) ? "." : "..";
-        //    setup.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "Version 1.0");
-        //    setup.OAuthAppName("Lambda Api");
-        //    setup.OAuthScopeSeparator(" ");
-        //    setup.OAuthUsePkce();
-        //});
+        app
+        .UseSwagger()
+        .UseSwaggerUI(setup =>
+        {
+            string swaggerJsonBasePath = string.IsNullOrWhiteSpace(setup.RoutePrefix) ? "." : "..";
+            setup.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "Version 1.0");
+            setup.OAuthAppName("Lambda Api");
+            setup.OAuthScopeSeparator(" ");
+            setup.OAuthUsePkce();
+        });
 
         app.UseDeveloperExceptionPage();
-        app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarteiraFinanceira v1"));
+
+        //app.UseSwagger();
+        //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarteiraFinanceira v1"));
 
 
         app.UseHttpsRedirection();

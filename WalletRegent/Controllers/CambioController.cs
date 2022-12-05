@@ -143,7 +143,7 @@ namespace WalletRegent.Controllers
                         
             valorConvertidoParaMoedaDaCarteiraPrincipal = Convert.ToDecimal(cotacaoMoedaVendida.converted) * valorVenda;
 
-            if (saldoNaCarteiraDeOrigem < valorConvertidoParaMoedaDaCarteiraPrincipal)
+            if (saldoNaCarteiraDeOrigem < valorVenda)
                 return BadRequest(string.Format("Não há saldo suficiente na carteira de {0} para realizar a venda.", moedaVendida));
 
             HttpResponseMessage responseVenda = await _exchangeWalletSvc.SellMoney(valorVenda,siglaMoeda);
