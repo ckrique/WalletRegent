@@ -48,5 +48,23 @@ namespace WalletRegent.Services
 
             return result;
         }
+
+        public async Task<HttpResponseMessage> SellMoney(decimal value, string currencyAcronym)
+        {
+            _httpClient.DefaultRequestHeaders.Add("ngrok-skip-browser-warnin", "40");
+
+            var uri = _serviceBaseUrl + _pathSellCurrency;
+
+            AtivoCambialDTO exchangeAssetSold = new AtivoCambialDTO();
+
+            exchangeAssetSold.valor = value;
+            exchangeAssetSold.siglaMoeda = currencyAcronym;
+
+            var content = new StringContent(JsonConvert.SerializeObject(exchangeAssetSold).ToString(), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage result = await _httpClient.PostAsync(uri, content);
+            
+            return result;
+        }
     }
 }

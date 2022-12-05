@@ -31,7 +31,7 @@ namespace WalletRegent.Services
             return responseString;
         }
 
-        public async Task PutMoneyInWallet(decimal value, string reason)
+        public async Task<HttpResponseMessage> PutMoneyInWallet(decimal value, string reason)
         {
             _httpClient.DefaultRequestHeaders.Add("ngrok-skip-browser-warnin", "40");
 
@@ -44,10 +44,12 @@ namespace WalletRegent.Services
 
             var content = new StringContent(JsonConvert.SerializeObject(moneyMovement).ToString(), Encoding.UTF8, "application/json");
 
-            var result = _httpClient.PostAsync(uri, content).Result;
+            var response = await _httpClient.PostAsync(uri, content);
+
+            return response;
         }
 
-        public async Task TakeMoneyfromWallet(decimal value, string reason)
+        public async Task<HttpResponseMessage> TakeMoneyfromWallet(decimal value, string reason)
         {
             _httpClient.DefaultRequestHeaders.Add("ngrok-skip-browser-warnin", "40");
 
@@ -60,7 +62,9 @@ namespace WalletRegent.Services
 
             var content = new StringContent(JsonConvert.SerializeObject(moneyMovement).ToString(), Encoding.UTF8, "application/json");
 
-            var result = _httpClient.PostAsync(uri, content).Result;
+            var response = await _httpClient.PostAsync(uri, content);
+
+            return response;
         }
     }
 }

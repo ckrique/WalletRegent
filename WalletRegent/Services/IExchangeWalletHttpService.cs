@@ -6,7 +6,6 @@ namespace WalletRegent.Services
     {
         public Task<IEnumerable<CarteiraCambialDTO>> GetExchangeWallets();
         public Task<HttpResponseMessage> ReceiveMoney(decimal value, string currencyAcronym);
-
-
+        public Task<HttpResponseMessage> SellMoney(decimal value, string currencyAcronym);
     }
 }
